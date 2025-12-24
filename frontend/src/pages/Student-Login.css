@@ -1,0 +1,117 @@
+/* src/components/pages/StudentLogin.css */
+@import url('../styles/UnifiedTheme.css');
+
+.student-login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    
+        background:  transparent;
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    
+    color: rgb(17, 17, 17);
+    overflow-x: hidden;
+}
+
+.student-login-card {
+    background-color: var(--blue);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    width: 100%;
+    max-width: 400px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    color: rgb(231, 116, 116);
+}
+
+.student-login-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.login-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.card-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.card-subtitle {
+    font-size: 1rem;
+    color: var(--black);
+}
+
+/* Corrected styling for the icon and input field */
+.input-with-icon {
+    position: left;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.input-icon {
+    position: left;
+    margin-left: 50;
+    left: 150px; /* Aligns the icon from the left edge */
+    top: 40%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 1rem;
+    pointer-events: none; /* Prevents the icon from blocking clicks on the input */
+    z-index: 10; /* Ensures the icon is above the input text */
+}
+
+.form-input {
+    padding: 12px 15px 12px 45px; /* Increased left padding to give enough space for the icon and some margin */
+    width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #d8d0d0;
+    color: #1f1e1e;
+    transition: all 0.2s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.button-primary {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--primary-color);
+    color: rgb(224, 213, 213);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.button-primary:hover:not(:disabled) {
+    background-color: var(--primary-hover-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.button-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}

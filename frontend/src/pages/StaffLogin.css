@@ -1,0 +1,66 @@
+/* src/components/pages/StaffLogin.css */
+@import url('../styles/UnifiedTheme.css');
+
+.staff-login-container {
+    background:  transparent;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    
+    color: rgb(12, 12, 12);
+    overflow-x: hidden;
+}
+
+.staff-login-card {
+    background-color: var(--card-background);
+}
+
+.staff-login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.staff-login-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.staff-login-subtitle {
+    font-size: 1rem;
+    color: var(--black);
+}
+
+.staff-login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.signup-text {
+    margin-top: 15px;
+    color: var(--black);
+}
+
+.button-danger-style {
+  background-color: var(--error-color);
+}
+
+.button-danger-style:hover {
+  background-color: #d83d3d;
+}
+
+.spinner {
+    animation: spinner-animation 1s linear infinite;
+    margin-right: 8px;
+}
+
+@keyframes spinner-animation {
+  to { transform: rotate(360deg); }
+}

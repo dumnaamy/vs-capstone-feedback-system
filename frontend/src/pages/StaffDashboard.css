@@ -1,0 +1,112 @@
+/* src/components/pages/StaffDashboard.css */
+@import url('../styles/UnifiedTheme.css');
+
+/* Main container */
+.staff-dashboard-container {
+  padding: 20px;
+  color: var(--black);
+}
+
+/* Dashboard Title */
+.dashboard-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+/* Card styles */
+.card {
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--primary-color);
+}
+
+/* Buttons */
+.btn {
+  border-radius: 10px;
+  font-weight: 500;
+  padding: 8px 14px;
+}
+
+.btn-outline-primary {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-danger {
+  background-color: var(--error-color);
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #d83d3d;
+}
+
+/* Feedback section */
+.feedback-card {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+}
+
+.feedback-card:last-child {
+  border-bottom: none;
+}
+
+.feedback-student {
+  font-weight: 600;
+  color: var(--black);
+}
+
+.feedback-meta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.feedback-rating {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.feedback-rating .text-yellow-400 {
+  color: #fbbf24; /* Tailwind yellow-400 */
+}
+
+.feedback-rating .text-gray-300 {
+  color: #d1d5db; /* Tailwind gray-300 */
+}
+
+/* Detailed feedback scroll area */
+.max-h-96 {
+  max-height: 24rem; /* same as Tailwind h-96 */
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
+}
+
+.text-muted {
+  color: var(--text-muted);
+}

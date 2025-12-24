@@ -1,0 +1,107 @@
+/* src/components/pages/AdminDashboard.css */
+@import url('../styles/UnifiedTheme.css');
+
+.admin-dashboard-container {
+    background: whitesmoke;
+    border-radius: 12px;
+    padding: 300px;
+    box-shadow: var(--shadow-lg);
+    margin-top: 20px;
+}
+
+.dashboard-title {
+    color: var(--text-color);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Tab Navigation Styles */
+.nav-tabs {
+    border-bottom: 2px solid var(--border-color);
+}
+
+.nav-tabs .nav-link {
+    color: var(--text-muted);
+    font-weight: 600;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 12px 20px;
+    transition: color 0.2s ease;
+}
+
+.nav-tabs .nav-link:hover {
+    color: var(--primary-hover-color);
+    border-color: var(--primary-hover-color);
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--primary-color);
+    background-color: transparent;
+    border-color: var(--primary-color);
+}
+
+/* General table styling */
+.table-responsive {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f8f9fa;
+    transform: scale(1.01);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Spinner styling */
+.spinner-border {
+    width: 2rem;
+    height: 2rem;
+    color: var(--accent-color) !important;
+}
+
+/* Modal styling overrides to align with theme */
+.modal-content {
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modal-footer {
+    border-top: 1px solid var(--border-color);
+}
+
+/* Button styling using Bootstrap and custom classes for consistency */
+.btn-danger {
+    background-color: var(--error-color);
+    border-color: var(--error-color);
+}
+
+.btn-danger:hover {
+    background-color: #d83d3d;
+    border-color: #d83d3d;
+}
+
+.btn-outline-danger {
+    color: var(--error-color);
+    border-color: var(--error-color);
+}
+
+.btn-outline-danger:hover {
+    color: white;
+    background-color: var(--error-color);
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover-color);
+    border-color: var(--accent-hover-color);
+}

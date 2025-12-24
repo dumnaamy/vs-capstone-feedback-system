@@ -1,0 +1,77 @@
+/* src/components/pages/LoginSelection.css */
+@import url('../styles/UnifiedTheme.css');
+
+.login-selection-container {
+    background: transparent;
+    min-height: (135deg, #8c78bb 0%, #fbc2eb 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.login-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--grey-dark);
+    margin-bottom: 40px;
+}
+
+.login-card-container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.login-card {
+    background-color: var(--card-background);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: var(--shadow-lg);
+    width: 100%;
+    max-width: 280px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+.login-icon {
+    font-size: 3rem;
+    color: var(--red );
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+.login-card:hover .login-icon {
+    color: var(--primary-color);
+}
+
+.login-card h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.login-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    .login-title {
+        font-size: 2rem;
+    }
+
+    .login-card-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Student Feedback System</title>
+    <meta name="description" content="A full-stack system for collecting student feedback and displaying analytics." />
+    <meta name="theme-color" content="#0d6efd" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="author" content="Student Feedback" />
+
+    <!-- Favicon & Icons -->
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- ✅ Bootstrap CSS (CDN) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+
+    <!-- Subtle global background image and base styles -->
+    <style>
+      html, body {
+        height: 100%;
+      }
+      body {
+        background-color: #0b1020;
+        background-image: radial-gradient(800px 400px at 10% 10%, rgba(99,102,241,0.2), transparent),
+                          radial-gradient(800px 400px at 90% 20%, rgba(236,72,153,0.18), transparent),
+                          radial-gradient(800px 400px at 20% 90%, rgba(16,185,129,0.15), transparent),
+                          url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'160\' height=\'160\' viewBox=\'0 0 40 40\'><defs><linearGradient id=\'g\' x1=\'0\' y1=\'0\' x2=\'1\' y2=\'1\'><stop stop-color=\'%23254b8b\'/><stop offset=\'1\' stop-color=\'%234a7cf0\'/></linearGradient></defs><g fill=\'none\' stroke=\'url(%23g)\' stroke-opacity=\'0.15\' stroke-width=\'1\'><path d=\'M0 20 H40\'/><path d=\'M20 0 V40\'/></g></svg>');
+        background-attachment: fixed;
+        background-size: cover, cover, cover, 160px 160px;
+        color: #111827;
+      }
+      /* Global toast container styling to complement app toasts */
+      .global-toast {
+        position: fixed;
+        top: 90px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(17, 24, 39, 0.9);
+        color: white;
+        padding: 10px 16px;
+        border-radius: 999px;
+        font-size: 0.875rem;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        z-index: 2000;
+        display: none;
+      }
+      /* Ensure tooltips sit below the toast */
+      .tooltip { z-index: 1500; }
+    </style>
+  </head>
+
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <div id="global-toast" class="global-toast" role="status" aria-live="polite"></div>
+
+    <!-- ✅ Bootstrap JS Bundle (includes Popper) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- ✅ Service Worker Registration Script -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker
+            .register('%PUBLIC_URL%/service-worker.js')
+            .then(registration => {
+              console.log('Service Worker registered with scope:', registration.scope);
+            })
+            .catch(error => {
+              console.error('Service Worker registration failed:', error);
+            });
+        });
+      }
+    </script>
+
+    <!-- ✅ Global tooltips and toast helper (no auto-click binding to avoid overlap) -->
+    <script>
+      (function() {
+        // Simple global toast helper
+        const toastEl = document.getElementById('global-toast');
+        window.showGlobalToast = function(message) {
+          if (!toastEl) return;
+          toastEl.textContent = message;
+          toastEl.style.display = 'block';
+          clearTimeout(window.__globalToastTimer);
+          window.__globalToastTimer = setTimeout(() => { toastEl.style.display = 'none'; }, 1800);
+        };
+
+        // Initialize Bootstrap tooltips for elements that have a title
+        try {
+          const tooltipTriggerList = Array.prototype.slice.call(document.querySelectorAll('[title]'));
+          const instances = [];
+          tooltipTriggerList.forEach(function (el) {
+            el.setAttribute('data-bs-toggle', 'tooltip');
+            el.setAttribute('data-bs-placement', el.getAttribute('data-bs-placement') || 'bottom');
+            const instance = window.bootstrap ? new window.bootstrap.Tooltip(el, {
+              trigger: 'hover focus',
+              container: 'body',
+              boundary: 'window',
+              delay: { show: 150, hide: 50 },
+            }) : null;
+            if (instance) {
+              instances.push({ el, instance });
+              el.addEventListener('shown.bs.tooltip', () => {
+                // Hide other tooltips to prevent overlap
+                instances.forEach(({ el: otherEl, instance: other }) => {
+                  if (otherEl !== el) { try { other.hide(); } catch(e) {} }
+                });
+              });
+            }
+          });
+
+          // Hide all tooltips on document click to avoid sticky overlaps
+          document.addEventListener('click', () => {
+            instances.forEach(({ instance }) => { try { instance.hide(); } catch(e) {} });
+          }, true);
+        } catch (e) {}
+      })();
+    </script>
+  </body>
+</html>

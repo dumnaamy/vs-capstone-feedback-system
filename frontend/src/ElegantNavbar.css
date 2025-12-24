@@ -1,0 +1,242 @@
+/* src/components/ElegantNavbar.css */
+@import url('./styles/UnifiedTheme.css');
+
+/* Top Navigation Bar */
+.top-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: #f4f4f7;
+    border-bottom: 1px solid #a1b0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.top-navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.top-navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.top-navbar-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: transform 0.3s ease;
+    margin-left: 15px;
+}
+
+.top-navbar-logo:hover {
+    transform: scale(1.02);
+}
+
+.logo-image {
+    height: 40px;
+    width: auto;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.logo-accent {
+    color: var(--accent-color);
+}
+
+/* Toggle Button & Top Bar Icons */
+.sidebar-toggle-btn,
+.top-navbar-search-btn,
+.top-navbar-logout,
+.top-navbar-login {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    padding: 8px;
+    border-radius: 5px;
+    transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-icon {
+    font-size: 1.5rem;
+    transition: transform 0.2s ease;
+}
+
+.sidebar-toggle-btn:hover,
+.top-navbar-search-btn:hover,
+.top-navbar-logout:hover,
+.top-navbar-login:hover {
+    color: var(--accent-color);
+    background-color: #e6f0ff;
+    transform: scale(1.1);
+}
+
+/* Collapsible Sidebar */
+.sidebar {
+    position: fixed;
+    top: 60px; /* Aligns with the top navbar */
+    left: 20px;
+    bottom: 0;
+    width: 300px; /* Width when expanded */
+    background-color: #e4c1c1;
+    border-right: 1px solid var(--border-color);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+    z-index: 999;
+    overflow-x: hidden;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+    transform: translateX(-100%); /* Hides sidebar completely */
+}
+
+.sidebar.expanded {
+    transform: translateX(0); /* Slides the sidebar into view */
+}
+
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 12px 15px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-link:hover {
+    background-color: #c7daee;
+    color: var(--accent-color);
+}
+
+.sidebar-link.active {
+    background-color: #e6f0ff;
+    color: var(--accent-color);
+}
+
+.sidebar-icon {
+    font-size: 1.2rem;
+    margin-right: 20px;
+    min-width: 20px;
+    transition: transform 0.2s ease;
+}
+
+.sidebar-text {
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar.expanded .sidebar-text {
+    opacity: 1;
+}
+
+/* Mobile Overlay for sidebar */
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    cursor: pointer;
+    backdrop-filter: blur(2px);
+}
+
+/* Search bar styles (Now visible by default) */
+.top-navbar-search-bar {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 250px;
+}
+
+.top-navbar-search-bar .search-form {
+    display: flex;
+    width: 100%;
+}
+
+.top-navbar-search-bar .search-input {
+    flex-grow: 1;
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.top-navbar-search-bar .search-input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.top-navbar-search-bar .search-submit-btn {
+    position: absolute;
+    right: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 1rem;
+    padding: 8px;
+    transition: color 0.2s ease;
+}
+
+.top-navbar-search-bar .search-submit-btn:hover {
+    color: var(--accent-hover-color);
+}
+
+/* Toast Notification */
+.simple-toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 2000;
+    opacity: 1;
+    animation: fadeinout 3s forwards;
+    font-size: 0.9rem;
+}
+
+@keyframes fadeinout {
+    0%, 100% { opacity: 0; }
+    10%, 90% { opacity: 1; }
+}
